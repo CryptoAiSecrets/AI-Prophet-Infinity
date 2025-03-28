@@ -1,0 +1,16 @@
+{
+  "name": "ai-prophet-infinity",
+  "version": "1.0.0",
+  "description": "AI Prophet Infinity Phase 3",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.1",
+    "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
+  }
+}
