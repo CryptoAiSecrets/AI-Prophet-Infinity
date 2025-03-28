@@ -1,11 +1,16 @@
 {
-  "name": "ai-builder-agent",
+  "name": "ai-prophet-infinity",
   "version": "1.0.0",
-  "description": "Autonomous agent for AI Prophet system to manage builds and deploys.",
-  "main": "ai-builder-agent.js",
-  "scripts": {
-    "start": "node ai-builder-agent.js"
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1"
   },
-  "author": "AI Architect",
-  "license": "MIT"
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  }
 }
