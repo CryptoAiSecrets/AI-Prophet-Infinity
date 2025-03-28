@@ -1,0 +1,11 @@
+{
+  "name": "ai-builder-agent",
+  "version": "1.0.0",
+  "description": "Autonomous agent for AI Prophet system to manage builds and deploys.",
+  "main": "ai-builder-agent.js",
+  "scripts": {
+    "start": "node ai-builder-agent.js"
+  },
+  "author": "AI Architect",
+  "license": "MIT"
+}
