@@ -48,11 +48,12 @@ function App() {
       <hr />
       <h2>AI Assistant</h2>
       <div style={{ background: '#111', padding: '10px', borderRadius: '10px', minHeight: '100px' }}>
-        {chat.map((c, i) => (
-          <div key={i} style={{ marginBottom: '8px', fontWeight: 'bold' }}>
-            AI Assistant: {c}
-          </div>
-        ))}
+        {chat.map((c, i) => {
+  return (
+    <div key={i} style={{ marginBottom: '8px', fontWeight: 'bold' }}>
+      {"AI Assistant: "} {c}
+    </div>
+  );
         <input
           type="text"
           value={message}
