@@ -1,3 +1,4 @@
+// AI Prophet: React-scripts installed ✅
 
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
