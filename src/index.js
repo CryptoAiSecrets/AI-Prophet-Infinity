@@ -1,3 +1,5 @@
+// AI Prophet Infinity - Phase 7 Visual Overhaul
+
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { Line } from 'react-chartjs-2';
@@ -43,23 +45,48 @@ function App() {
   };
 
   return (
-    <div style={{ background: '#000', color: '#00f5a0', minHeight: '100vh', padding: '20px' }}>
-      <h1>AI Prophet Infinity Dashboard</h1>
+    <div style={{
+      background: 'url("https://www.transparenttextures.com/patterns/hexellence.png") #000',
+      backgroundSize: 'cover',
+      color: '#00f5a0',
+      minHeight: '100vh',
+      padding: '20px',
+      fontFamily: 'Arial, sans-serif'
+    }}>
+      <h1 style={{ fontSize: '2.5rem', textShadow: '0 0 10px #0f0' }}>AI Prophet Infinity Dashboard</h1>
       <button
         onClick={() => setShowProof(!showProof)}
-        style={{ padding: '10px 20px', marginBottom: '20px', background: '#00f5a0', color: '#000', fontWeight: 'bold' }}
+        style={{
+          padding: '10px 20px',
+          marginBottom: '20px',
+          background: 'linear-gradient(145deg, #0f0, #0a0)',
+          color: '#000',
+          fontWeight: 'bold',
+          borderRadius: '12px',
+          boxShadow: '0 0 10px #0f0'
+        }}
       >
         {showProof ? 'Hide Proof' : 'Show Proof'}
       </button>
       {showProof ? (
         <PredictionViewer />
       ) : (
-        <>
-          <h2>7-Day Market Prediction</h2>
+        <div style={{
+          background: 'rgba(17, 17, 17, 0.85)',
+          borderRadius: '15px',
+          padding: '20px',
+          boxShadow: '0 0 20px rgba(0, 245, 160, 0.2)'
+        }}>
+          <h2 style={{ fontSize: '1.5rem' }}>7-Day Market Prediction</h2>
           <Line data={predictionData} />
-          <hr />
+          <hr style={{ borderColor: '#0f0' }} />
           <h2>AI Assistant</h2>
-          <div style={{ background: '#111', padding: '10px', borderRadius: '10px', minHeight: '100px' }}>
+          <div style={{
+            background: '#111',
+            padding: '10px',
+            borderRadius: '10px',
+            minHeight: '100px'
+          }}>
             {chat.map((c, i) => (
               <div key={i} style={{ marginBottom: '8px', fontWeight: 'bold' }}>
                 {"AI Assistant: "} {c}
@@ -70,13 +97,32 @@ function App() {
               value={message}
               placeholder="Ask about BTC, NASDAQ, NVDA..."
               onChange={(e) => setMessage(e.target.value)}
-              style={{ width: '80%', padding: '10px', marginTop: '10px', background: '#000', color: '#0f0' }}
+              style={{
+                width: '80%',
+                padding: '10px',
+                marginTop: '10px',
+                background: '#000',
+                color: '#0f0',
+                border: '1px solid #0f0',
+                borderRadius: '6px'
+              }}
             />
-            <button onClick={sendMessage} style={{ padding: '10px', marginLeft: '10px', background: '#00f5a0', color: '#000' }}>
+            <button
+              onClick={sendMessage}
+              style={{
+                padding: '10px',
+                marginLeft: '10px',
+                background: 'linear-gradient(to right, #00f5a0, #00c3ff)',
+                color: '#000',
+                fontWeight: 'bold',
+                borderRadius: '8px',
+                boxShadow: '0 0 10px #00f5a0'
+              }}
+            >
               Send
             </button>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
