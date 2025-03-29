@@ -1,107 +1,50 @@
-// AI Prophet Infinity Visual UI - Phase 7 Final Layout
+// AI Prophet Infinity - Final Visual Preview Build
 
-import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
-import { Line } from 'react-chartjs-2';
-import {
-  Chart as ChartJS,
-  LineElement,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  Tooltip,
-  Legend,
-} from 'chart.js';
+import React from 'react';
 
-ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
+const predictions = [
+  { asset: 'Bitcoin', direction: 'UP', confidence: '91%', change: '+4.5%' },
+  { asset: 'NASDAQ', direction: 'DOWN', confidence: '78%', change: '-2.1%' },
+  { asset: 'NVIDIA', direction: 'UP', confidence: '87%', change: '+3.2%' },
+];
 
-const predictionData = {
-  labels: ['3/28', '3/29', '3/30', '3/31', '4/1', '4/2', '4/3'],
-  datasets: [
-    {
-      label: 'AI Prediction',
-      data: [12700, 12900, 13250, 13300, 13400, 13600, 13800],
-      borderColor: '#00f5a0',
-      backgroundColor: 'rgba(0,245,160,0.2)',
-      tension: 0.4,
-    },
-  ],
-};
+const PredictionCard = ({ asset, direction, confidence, change }) => (
+  <div className={`bg-black/70 border border-${direction === 'UP' ? 'green' : 'red'}-500 p-4 rounded-2xl shadow-xl backdrop-blur-md w-full`}> 
+    <h3 className="text-xl font-bold text-white">{asset}</h3>
+    <p className="text-sm text-gray-300">Direction: <span className={`text-${direction === 'UP' ? 'green' : 'red'}-400`}>{direction}</span></p>
+    <p className="text-sm text-gray-300">Confidence: {confidence}</p>
+    <p className="text-sm text-gray-300">Change: {change}</p>
+  </div>
+);
 
-function App() {
-  const [message, setMessage] = useState('');
-  const [chat, setChat] = useState(['Welcome to AI Prophet Infinity.']);
-
-  const sendMessage = () => {
-    if (message.trim() !== '') {
-      setChat([...chat, message]);
-      setMessage('');
-    }
-  };
-
+const Dashboard = () => {
   return (
-    <div style={{ background: '#000', color: '#00f5a0', minHeight: '100vh', fontFamily: 'monospace' }}>
-      <div style={{ padding: '20px' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>AI Prophet Infinity</h1>
+    <div className="min-h-screen bg-[url('/carbon.gif')] bg-cover bg-center text-white p-6 space-y-8">
+      <header className="text-center">
+        <h1 className="text-4xl font-bold text-green-400 drop-shadow-md">AI Prophet Infinity</h1>
+        <p className="text-gray-300 text-sm">The Future of Predictive Finance</p>
+      </header>
 
-        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap', marginTop: '20px' }}>
-          <div style={{ flex: 1, minWidth: '300px', background: '#111', borderRadius: '10px', padding: '20px' }}>
-            <h2 style={{ fontSize: '1.2rem', marginBottom: '10px' }}>Portfolio Predictions</h2>
-            <Line data={predictionData} />
-            <div style={{ textAlign: 'right', marginTop: '10px', color: '#0f0' }}>Confidence: 87%</div>
-          </div>
+      <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {predictions.map((p, i) => <PredictionCard key={i} {...p} />)}
+      </section>
 
-          <div style={{ flex: 1, minWidth: '300px', background: '#111', borderRadius: '10px', padding: '20px' }}>
-            <h2 style={{ fontSize: '1.2rem', marginBottom: '10px' }}>AI Assistant</h2>
-            <div style={{ background: '#000', padding: '10px', borderRadius: '10px', minHeight: '80px' }}>
-              {chat.map((c, i) => (
-                <div key={i} style={{ marginBottom: '8px' }}>
-                  <strong>AI:</strong> {c}
-                </div>
-              ))}
-            </div>
-            <input
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Ask about BTC, NASDAQ, etc."
-              style={{ marginTop: '10px', width: '100%', padding: '8px', background: '#000', color: '#0f0', border: '1px solid #00f5a0', borderRadius: '5px' }}
-            />
-            <button
-              onClick={sendMessage}
-              style={{ marginTop: '10px', padding: '10px 20px', background: '#00f5a0', color: '#000', border: 'none', borderRadius: '5px' }}
-            >
-              Send
-            </button>
-          </div>
+      <section className="bg-black/60 p-6 rounded-xl shadow-inner backdrop-blur-md">
+        <h2 className="text-2xl font-bold mb-4 text-blue-400">AI Assistant</h2>
+        <div className="bg-black p-4 rounded-lg max-h-60 overflow-y-auto">
+          <div className="text-green-400">AI: Welcome back. Ready for your market edge?</div>
         </div>
-
-        <div style={{ marginTop: '40px', background: '#111', borderRadius: '10px', padding: '20px' }}>
-          <h2 style={{ fontSize: '1.2rem', marginBottom: '10px' }}>Top Predictions</h2>
-          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-            <div style={{ background: '#003300', padding: '10px', borderRadius: '10px', flex: 1 }}>
-              <h3>Bitcoin</h3>
-              <p>Predicted: $66,577</p>
-              <p>Change: +2.96%</p>
-              <p>Confidence: 87%</p>
-            </div>
-            <div style={{ background: '#330000', padding: '10px', borderRadius: '10px', flex: 1 }}>
-              <h3>NASDAQ</h3>
-              <p>Predicted: 13,800</p>
-              <p>Change: -1.25%</p>
-              <p>Confidence: 76%</p>
-            </div>
-            <div style={{ background: '#001133', padding: '10px', borderRadius: '10px', flex: 1 }}>
-              <h3>NVIDIA</h3>
-              <p>Predicted: $477.65</p>
-              <p>Change: +5.18%</p>
-              <p>Confidence: 91%</p>
-            </div>
-          </div>
+        <div className="flex mt-4">
+          <input
+            type="text"
+            placeholder="Ask about Bitcoin, NASDAQ, NVDA..."
+            className="flex-1 p-2 bg-black border border-green-500 rounded-l-xl text-green-400 placeholder-green-600"
+          />
+          <button className="bg-green-400 text-black px-6 py-2 rounded-r-xl font-bold">Send</button>
         </div>
-      </div>
+      </section>
     </div>
   );
-}
+};
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<App />);
+export default Dashboard;
