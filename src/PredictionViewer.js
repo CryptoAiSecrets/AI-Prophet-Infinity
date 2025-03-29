@@ -1,27 +1,24 @@
+import React from 'react';
 
-import React, { useEffect, useState } from 'react';
-import { getPredictionLog } from './ProofLogger';
+const predictions = [
+  { date: '3/28', asset: 'BTC', direction: 'UP', confidence: '91%', change: '+4.5%' },
+  { date: '3/28', asset: 'NASDAQ', direction: 'DOWN', confidence: '78%', change: '-2.1%' },
+  { date: '3/28', asset: 'NVDA', direction: 'UP', confidence: '87%', change: '+3.2%' },
+];
 
-function PredictionViewer() {
-  const [logs, setLogs] = useState([]);
-
-  useEffect(() => {
-    const logs = getPredictionLog();
-    setLogs(logs);
-  }, []);
-
+const PredictionViewer = () => {
   return (
-    <div style={{ padding: '20px', color: '#00f5a0' }}>
-      <h2>📜 Prediction Log</h2>
-      <ul>
-        {logs.map((log, idx) => (
-          <li key={idx}>
-            {log.timestamp} - {log.asset}: {log.direction} by {log.percentChange}% (Confidence: {log.confidence}%)
+    <div style={{ background: '#111', padding: '20px', borderRadius: '10px' }}>
+      <h3>Prediction Log (Proof)</h3>
+      <ul style={{ listStyle: 'none', padding: 0 }}>
+        {predictions.map((p, i) => (
+          <li key={i} style={{ marginBottom: '10px', color: '#0f0' }}>
+            {`${p.date} - ${p.asset}: ${p.direction} by ${p.change} (Confidence: ${p.confidence})`}
           </li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
 export default PredictionViewer;
