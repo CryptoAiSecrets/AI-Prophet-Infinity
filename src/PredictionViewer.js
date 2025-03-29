@@ -9,7 +9,7 @@ const predictions = [
 const PredictionViewer = () => {
   return (
     <div style={{ background: '#111', padding: '20px', borderRadius: '10px' }}>
-      <h3>Prediction Log (Proof)</h3>
+      <h3 style={{ color: '#00f5a0' }}>Prediction Log (Proof)</h3>
       <ul style={{ listStyle: 'none', padding: 0 }}>
         {predictions.map((p, i) => (
           <li key={i} style={{ marginBottom: '10px', color: '#0f0' }}>
